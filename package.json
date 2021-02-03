@@ -1,0 +1,36 @@
+{
+  "name": "no-sql-social-net-api",
+  "version": "1.0.0",
+  "description": "An API for social network web application built with Express.js, MongoDB database and Mongoose ODM.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "devStart": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hcs847/no-sql-social-net-api.git"
+  },
+  "keywords": [
+    "MongoDB",
+    "Mongoose",
+    "Node.js",
+    "API",
+    "Express.js",
+    "Moment.js"
+  ],
+  "author": "Hila Caspi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hcs847/no-sql-social-net-api/issues"
+  },
+  "homepage": "https://github.com/hcs847/no-sql-social-net-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.14"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
