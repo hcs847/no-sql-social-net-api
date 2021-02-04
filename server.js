@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 //  setup directory for serving static files
 app.use(express.static("public"));
 
-// app.use(require("./routes"));
+app.use(require("./routes"));
 
 // setup Mongoose to connect when we start the app
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/social-net-api", {
