@@ -4,6 +4,11 @@ const thoughtController = {
   // get all thoughts
   getAllThought(req, res) {
     Thought.find({})
+      .populate({
+        path: "reactions",
+        select: "-__v",
+      })
+      .select("-__v")
       .then((dbThoughData) => res.json(dbThoughData))
       .catch((err) => res.status(400).json(err));
   },
