@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Thought } = require("../models");
 
 const userController = {
   // setup method as callback functions for the routes
@@ -25,6 +25,7 @@ const userController = {
           res.status(404).json({ message: "No user found with this id" });
           return;
         }
+        console.log(dbUserData.thoughts);
         res.json(dbUserData);
       })
       .catch((err) => res.status(400).json(err));
@@ -49,15 +50,26 @@ const userController = {
       })
       .catch((err) => res.status(400).json(err));
   },
+
   //   delete user by id
   deleteUser(req, res) {
-    User.findOneAndDelete({ _id: req.params.id }).then((dbUserData) => {
-      if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id!" });
-        return;
-      }
-      res.json(dbUserData);
-    });
+    User.findOneAndDelete({ _id: req.params.id })
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          res.status(404).json({ message: "No user found with this id!" });
+          return;
+        } else {
+          // resolving the find user and delete promise
+          res.json(dbUserData);
+          //   iterating through the toughts array and deleteing each user's thought by id
+          dbUserData.thoughts.forEach((thoughtId) => {
+            Thought.findOneAndDelete({ _id: thoughtId }).then((dbThougtData) => {
+              return dbThougtData;
+            });
+          });
+        }
+      })
+      .catch((err) => res.status(400).json(err));
   },
 
   //   add a new friend
