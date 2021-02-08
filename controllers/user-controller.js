@@ -25,7 +25,6 @@ const userController = {
           res.status(404).json({ message: "No user found with this id" });
           return;
         }
-        console.log(dbUserData.thoughts);
         res.json(dbUserData);
       })
       .catch((err) => res.status(400).json(err));
@@ -84,7 +83,6 @@ const userController = {
           res.status(404).json({ message: "no user found with this id" });
           return;
         }
-        console.log(dbFriendData);
         res.json(dbFriendData);
       })
       .catch((err) => res.json(err));
@@ -103,7 +101,6 @@ const userController = {
           res.status(404).json({ message: "No user found with thid id!" });
           return;
         }
-        console.log(dbFriendData);
         res.json(dbFriendData);
       })
       .catch((err) => res.status(400).json(err));
